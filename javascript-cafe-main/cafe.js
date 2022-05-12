@@ -42,7 +42,7 @@ displayProducts()
 // -- CUSTOMERS -- //
 
 let customer = {
-  order []
+  order: [],
 }
 
 let minOrderSize = 1
@@ -54,19 +54,17 @@ function generateCustomerOrder() {
   // assign the new order to the customer object
   // display the customer order
 
-let orderSize = getRandomInt(minOrderSize, maxOrderSize)
+  let orderSize = getRandomInt(minOrderSize, maxOrderSize)
 
-let order = []
+  let order = []
 
-let productNames = Object.keys(product)
+  let productNames = Object.keys(products)
 
-for (let i = 0; i <= orderSize; i++)
-
-let productIndex = getRandomInt(0, productNames.length - 1)
-let productName = productsNames[productIndex]
-newOrder.push(productName)
-
-
+  for (let i = 0; i <= orderSize; i++) {
+    let productIndex = getRandomInt(0, productNames.length - 1)
+    let productName = productsNames[productIndex]
+    newOrder.push(productName)
+  }
 }
 
 customer.order = newOrder
@@ -75,60 +73,49 @@ displayCustomerOrder()
 generateCustomerOrder()
 
 function displayCustomerOrder() {
-  document.getElementById("customerOrder").innerHTML = "Customer order: " + customer.order
+  document.getElementById('customerOrder').innerHTML =
+    'Customer order: ' + customer.order
 }
 
-document.getElementById("customerButton").onclick = generateCustomerOrder
+document.getElementById('customerButton').onclick = generateCustomerOrder
 
 // -- TRANSACTIONS -- //
 
-  let cash = 0
+let cash = 0
 
-  function displayCash () {
-    document.getElementById("cash").innerHTML = "Cash:" + cash
+function displayCash() {
+  document.getElementById('cash').innerHTML = 'Cash:' + cash
+}
 
-  
-  }
+displayCash()
 
-  displayCash()
+function fillOrder() {
+  let saleTotal = 0
 
-  function fillOrder () {
+  for (let i = 0; i < customer.order.length; i++) {
+    let productName = customer.order[i]
 
-    let saleTotal = 0
-    
-    for (let i = 0; i < customer.order.length; i++) {
-
-      let productName = customer.order[i]
-
-      if (products[productName].stock > 0) {
-
-        products[ProductName].stock--
-        saleTotal += products[productName].price
-
-      } else {
-        alert("I'm sorry, we're out of " + productName)
-      }
-
-      
+    if (products[productName].stock > 0) {
+      products[ProductName].stock--
+      saleTotal += products[productName].price
+    } else {
+      alert("I'm sorry, we're out of " + productName)
     }
-
-    cash += saleTotal
-    customer.order = []
-
-      displayProducts()
-      displayCash()
-      displayCustomerOrder(
-
-      )
-    
   }
-  
-  document.getElementById("fillOrder").oneclick = fillOrder
+
+  cash += saleTotal
+  customer.order = []
+
+  displayProducts()
+  displayCash()
+  displayCustomerOrder()
+}
+
+document.getElementById('fillOrder').oneclick = fillOrder
 // -- UTIL -- //
 
 function getRandomInt(min, max) {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min +1)) + min;
-
+  min = Math.ceil(min)
+  max = Math.floor(max)
+  return Math.floor(Math.random() * (max - min + 1)) + min
 }
