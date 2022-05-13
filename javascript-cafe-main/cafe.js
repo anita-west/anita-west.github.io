@@ -29,7 +29,7 @@ function displayProducts() {
     'White Coffee: ' + products.whiteCoffee.stock
 
   document.getElementById('blackCoffee').innerHTML =
-    'Black Coffee: ' + products.BlackCoffee.stock
+    'Black Coffee: ' + products.blackCoffee.stock
 
   document.getElementById('muffin').innerHTML =
     'Muffin: ' + products.muffin.stock
@@ -56,19 +56,19 @@ function generateCustomerOrder() {
 
   let orderSize = getRandomInt(minOrderSize, maxOrderSize)
 
-  let order = []
+  let newOrder = []
 
   let productNames = Object.keys(products)
 
   for (let i = 0; i <= orderSize; i++) {
     let productIndex = getRandomInt(0, productNames.length - 1)
-    let productName = productsNames[productIndex]
+    let productName = productNames[productIndex]
     newOrder.push(productName)
   }
-}
 
-customer.order = newOrder
-displayCustomerOrder()
+  customer.order = newOrder
+  displayCustomerOrder()
+}
 
 generateCustomerOrder()
 
