@@ -1,17 +1,29 @@
-  // -    -   -   -   -  //
- // JAVASCRIPT CARNIVAL //
+// -    -   -   -   -  //
+// JAVASCRIPT CARNIVAL //
 // -    -   -   -   -  //
 
-console.log("Whack-a-Mole!")
+console.log('Whack-a-Mole!')
 
-var cells = document.getElementsByTagName("ID")
+var cells = document.getElementsByTagName('ID')
 
-var randomIndex = Math.floor(Math.random() * cells.length
+var randomIndex = Math.floor(Math.random() * cells.length)
 
-var randomCell = cells(randomIndex)
+var randomCell = cells[randomIndex]
 
-var mole = document.createElement('img');
+var mole = document.createElement('img')
 
-mole src = './mole.PNG';
+mole.src = './mole.PNG'
+mole.id = 'mole'
 
-randomCell.appendChild(mole);
+randomCell.appendChild(mole)
+
+mole.onclick = whackedMole
+
+function whackedMole() {
+  randomIndex = Math.floor(Math.random() * cells.length)
+  randomCell = cells[randomIndex]
+  randomCell.appendChild(mole)
+
+  var audio = new Audio('./whack-audio.wav')
+  audio.play()
+}
