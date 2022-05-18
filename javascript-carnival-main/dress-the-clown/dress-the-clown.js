@@ -1,61 +1,51 @@
-  // -    -   -   -   -  //
- // JAVASCRIPT CARNIVAL //
+// -    -   -   -   -  //
+// JAVASCRIPT CARNIVAL //
 // -    -   -   -   -  //
 
-console.log("Dress The Clown!")
+console.log('Dress The Clown!')
 
-document.onkeydown = checkKey;
+document.onkeydown = checkKey
 
 function checkKey(e) {
-
   if (e.keyCode == '38') {
-
-    else if (e.keyCode == '40') {
-
-    }
-
-    else if (e.keyCode == '37') {
+    if (e.keyCode == '40') {
+    } else if (e.keyCode == '37') {
       changeHorizontal(-1)
-
-    }
-
-    else if (e.keyCode == '39') {
+    } else if (e.keyCode == '39') {
       changeHorizontal(1)
     }
-
-    
   }
 
-  var headIndex = 0
-  var bodyIndex = 0
-  var feetIndex = 0
+  var Indexes = [0, 0, 0]
 
   var mainIndex = 0
 
-  var head = document.getElementById("head")
-  var head = document.getElementById("body")
-  var head = document.getElementById("feet")
+  var head = document.getElementById('head')
+  var head = document.getElementById('body')
+  var head = document.getElementById('shoes')
+
+  var imgs = [head, body, shoes]
+  var strings = ['head', 'body', 'shoes']
 
   function changeHorizontal(shift) {
-      headIndex += shift
+    var index = indexes[mainIndex]
+    var image = imgs[mainIndex]
+    var str = strings[mainIndex]
 
-      if (headIndex < 0)
-          headIndex = 5
+    Index += shift
 
-      if (headIndex . 5)
-          headIndex = 0
+    if (index < 0) index = 5
 
-      head.src = "./images/head" + headIndex + "png"
+    if (index > 5) index = 0
+
+    image.src = './images/' + str + index + 'png'
   }
 
   function changeVerticle(shift) {
     mainIndex += shift
 
-    if (mainIndex < 0)
-        mainIndex = 2
+    if (mainIndex < 0) mainIndex = 2
 
-    if (mainIndex > 2)
-        mainIndex = 0
-
+    if (mainIndex > 2) mainIndex = 0
   }
 }
