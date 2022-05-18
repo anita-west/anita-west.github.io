@@ -38,6 +38,8 @@ function checkKey(e) {
 
     if (index > 5) index = 0
 
+    indexes[mainIndex] = index
+
     image.src = './images/' + str + index + 'png'
   }
 
